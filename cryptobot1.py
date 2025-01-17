@@ -159,8 +159,7 @@ async def send_query_and_process(update: Update, context: ContextTypes.DEFAULT_T
     async with aiohttp.ClientSession() as session:
         async with session.post(url, headers=headers, json={'query': query, 'variables': variables}) as response:
             response_text = await response.text()
-            print(response_text)
-        
+            
 
             if response.status == 200:
                 try:
