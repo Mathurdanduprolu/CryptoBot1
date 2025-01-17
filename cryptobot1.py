@@ -22,7 +22,7 @@ logging.basicConfig(
 BOT_TOKEN = "7905235947:AAFtQ9ht4tSvEUEZUsbi-sKN0Y0J1dUod2c"
 
 # OAuth Token from Bitquery
-OAUTH_TOKEN = "BQY1Duhz1RC4qb2l6SgJjXwCuUDqkTcy"
+OAUTH_TOKEN = "	ory_at_cLqTyrjIpSuOHcTaNWwUneBX_BO8CsQKRwBdng2PYv8._m1qBD569BngV-feBgQCLaCoieArfOkvIygOxoiQNLk"
 
 # Function to split long text into smaller parts
 def split_text(text, max_length):
@@ -159,6 +159,8 @@ async def send_query_and_process(update: Update, context: ContextTypes.DEFAULT_T
     async with aiohttp.ClientSession() as session:
         async with session.post(url, headers=headers, json={'query': query, 'variables': variables}) as response:
             response_text = await response.text()
+            print(response_text)
+        
 
             if response.status == 200:
                 try:
@@ -204,6 +206,7 @@ def calculate_percentage_change(start_price, end_price):
 
 
 def format_message(data):
+    
     message = ""
     for item in data:
         try:
@@ -248,7 +251,6 @@ def format_message(data):
                 f"📉 <b>Sell Volume:</b> ${sell_volume} | 👥 <b>Sellers:</b> {sellers} | 🔽 <b>Sells:</b> {sells}\n"
                 f"🔄 <b>Traded Volume:</b> ${traded_volume} | 📊 <b>Trades:</b> {trades}\n"
                 f"👥 <b>Makers:</b> {makers}\n\n"
-                f"<a href='{trade_now_url}'>💵 Trade Now</a>\n"
                 "----------------------------------\n"
             )
 
@@ -278,7 +280,7 @@ async def start_regular_requests(update: Update, context: ContextTypes.DEFAULT_T
     try:
         while True:
             await send_query_and_process(update, context)
-            await asyncio.sleep(1800)  # Wait for 30 minutes before sending the next request
+            await asyncio.sleep(60)  # Wait for 30 minutes before sending the next request
     finally:
         is_task_running = False  # Ensure the flag is reset if the loop ends for any reason
 
