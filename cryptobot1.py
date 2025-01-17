@@ -19,10 +19,10 @@ logging.basicConfig(
 )
 
 # Your bot token from the BotFather
-BOT_TOKEN = "BOT_TOKEN"
+BOT_TOKEN = "7905235947:AAFtQ9ht4tSvEUEZUsbi-sKN0Y0J1dUod2c"
 
 # OAuth Token from Bitquery
-OAUTH_TOKEN = "OAUTH_TOKEN"
+OAUTH_TOKEN = "BQY1Duhz1RC4qb2l6SgJjXwCuUDqkTcy"
 
 # Function to split long text into smaller parts
 def split_text(text, max_length):
